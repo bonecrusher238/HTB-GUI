@@ -1,14 +1,9 @@
 #!/bin/bash
 ver=''
-configLoc='/tmp/htb-gui/config.dat';
-setupVer=cat $configLoc | grep -w 'SETUP' | cut -d '=' -f2
+configLoc='/tmp/htb-gui/config.dat'
+setupVer= cat $configLoc | grep -w 'SETUP' | cut -d '=' -f2
 
-if [[ $setupVer != "TRUE" ]]
- then
-    echo "You hack!"
-    echo "Running Setup"
-    exit
-fi
+echo $setupVer
 
 echo "-----------------------------------------------------------------"
 printf "\n" 
