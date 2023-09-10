@@ -1,3 +1,6 @@
+ver=''
+configLoc='/etc/htb-gui/config.dat'
+
 echo "-----------------------------------------------------------------"
 printf "\n" 
 printf "\n"
