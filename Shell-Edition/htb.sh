@@ -50,8 +50,8 @@ case $input in
 1 | IP | ip)
     echo "Please enter the IPADDR"
     read -p ":?> " newIP
-    echo "currIPADDR=$newIP" >> $configLoc
     sed -i "/currIPADDR/d" $configLoc
+    echo "currIPADDR=$newIP" >> $configLoc
     echo "The IPADDR has been changed to $currIPADDR"
     refresh
     mainMenu
