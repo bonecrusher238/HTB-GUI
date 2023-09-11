@@ -38,10 +38,11 @@ mainMenu() {
     printf "\n"
     echo " Please select an option!"  
     echo " 1. Select a Host IP                  Current IP ADDR       :?> $currIPADDR"
-    echo " 2. DNS enum                          Cureent DNS ADDR      :?> $currDnsADDR"
+    echo " 2. DNS enum                          Current DNS ADDR      :?> $currDnsADDR"
     echo " 3. Go Buster!"
     echo " 4. burpsuite"
     echo " 5. nmap"
+    echo "10. Settings"
     printf "\n"
 read -p ":?> " input
 
@@ -90,4 +91,5 @@ esac
 }
 setupTest
 introMenu
+refresh
 mainMenu
