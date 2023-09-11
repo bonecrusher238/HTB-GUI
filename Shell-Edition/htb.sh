@@ -41,8 +41,8 @@ mainMenu() {
     echo " 1. Select a Host IP                  Current IP ADDR       :?> $currIPADDR"
     echo " 2. DNS enum                          Current DNS ADDR      :?> $currDnsADDR"
     echo " 3. Go Buster!"
-    echo " 4. burpsuite"
-    echo " 5. nmap"
+    echo " 4. Burpsuite"
+    echo " 5. Nmap"
     echo "10. Settings"
     printf "\n"
     read -p ":?> " input
@@ -86,7 +86,7 @@ case $input in
 
 ;;
 3 | gb | go | gobuster)
-
+htb-go-buster.sh
 ;;
 4 | bp | bs | burp | burpsuite)
 bash -c 'gnome-terminal -x burpsuite'
