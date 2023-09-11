@@ -44,7 +44,9 @@ mainMenu() {
     echo " 5. nmap"
     echo "10. Settings"
     printf "\n"
-read -p ":?> " input
+    read -p ":?> " input
+    printf "\n"
+    echo "---------------------------------------------------------------------------"
 
 case $input in
 1 | IP | ip)
@@ -71,8 +73,15 @@ case $input in
     sed -i "/currDnsADDR/d" $configLoc
     echo "currDnsADDR=$newdnsInput" >> $configLoc
     refresh
-    echo $currIPADDR $currDnsADDR | sudo tee -a /etc/hosts
-    mainMenu
+    echo "Does this need to be added to the hosts file (y/n)"
+    read -p ":?> " newHost
+    if [[ $newHost == 'y' ]] ; 
+      then
+        echo $currIPADDR $currDnsADDR | sudo tee -a /etc/hosts
+        mainMenu
+    else
+        mainMenu
+    fi
 
 ;;
 3 | gb | go | gobuster)
