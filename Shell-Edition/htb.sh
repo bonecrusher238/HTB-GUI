@@ -9,9 +9,7 @@ currDnsADDR=$(cat $configLoc | grep -w 'currDnsADDR' | cut -d '=' -f2)
 setupTest() {
     if [ ! "$setupVer" = "TRUE" ];
         then
-            echo "You Skipped a step!"
-            echo "Running Installer!"
-            exit
+        htb-setup.sh
     fi
 }
 #this is to refresh all varibles 
@@ -38,9 +36,9 @@ introMenu() {
 mainMenu() {
     printf "\n"
     printf "\n"
-    echo " Please select an option!                                 Current ADDR"  
-    echo " 1. Select a Host IP                                        :?> $currIPADDR"
-    echo " 2. DNS enum                                                :?> $currDnsADDR"
+    echo " Please select an option!"  
+    echo " 1. Select a Host IP                  Current IP ADDR       :?> $currIPADDR"
+    echo " 2. DNS enum                          Cureent DNS ADDR      :?> $currDnsADDR"
     echo " 3. Go Buster!"
     echo " 4. burpsuite"
     echo " 5. nmap"
@@ -52,6 +50,7 @@ case $input in
     echo "Please enter the IPADDR"
     read -p ":?> " newIP
     echo "currIPADDR=$newIP" >> $configLoc
+    sed -i "/currIPADDR/d" $configLoc
     echo "The IPADDR has been changed to $currIPADDR"
     refresh
     mainMenu
@@ -68,6 +67,7 @@ case $input in
     echo "Please Enter in the DNS!"
     read -p ":?> " newdnsInput
     echo "adding DNS $newdnsInput"
+    sed -i "/currDnsADDR/d" $configLoc
     echo "currDnsADDR=$newdnsInput" >> $configLoc
     refresh
     echo $currIPADDR $currDnsADDR | sudo tee -a /etc/hosts
