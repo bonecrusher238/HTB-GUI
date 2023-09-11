@@ -31,7 +31,6 @@ introMenu() {
     echo "  This program is simply for remembering commands and making life easier"
     echo "    This has no affiliation with anyone or any place"
     echo "      This does not claim ownership nor rights of any other reasource used"
-    echo "-----------------------------------------------------------------------------"
 }
 mainMenu() {
     echo "-----------------------------------------------------------------------------"
