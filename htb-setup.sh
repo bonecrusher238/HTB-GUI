@@ -20,7 +20,6 @@ copyHTB() {
 if [[ ! -e '/usr/local/bin/htb.sh' ]] ;
   then
     echo HTB does not exist!
-    echo Transfering HTB
     cd $installLoc
     cd Shell-Edition
     sudo cp htb.sh $binLoc 
@@ -33,7 +32,6 @@ copyHTBgo() {
 if [[ ! -e '/usr/local/bin/htb-go-buster.sh' ]] ;
   then
    echo HTBgo does not exist!
-    echo Transfering HTB
     cd $installLoc
     cd Shell-Edition
     sudo cp htb-go-buster.sh $binLoc
