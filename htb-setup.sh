@@ -1,13 +1,18 @@
 #!/bin/bash
+configFolderLoc='/tmp/htb-gui'
 configLoc='/tmp/htb-gui/config.dat'
 binLoc='/usr/local/bin/'
+htbLoc='/usr/local/bin/htb.sh'
+nmapLoc='/usr/local/bin/htb-nmap.sh'
 installLoc=$(pwd)
 
+
 removeDir() {
-  sudo rmdir /tmp/htb-gui
-  sudo rm /usr/local/bin/htb.sh
+  sudo rmdir $configFolderLoc
+  sudo rm $htbLoc
   sudo rm /usr/local/bin/htb-go-buster.sh
   sudo rm /usr/local/bin/htb-setup.sh
+  sudo rm $nmapLoc
 }
 
 createDir() {
@@ -21,6 +26,17 @@ if [[ ! -d /tmp/htb-gui ]] ;
     echo "SETUP=TRUE" >> $configLoc
   else
     echo Config Exists
+fi
+}
+copyNmap() {
+if [[ ! -e $nmapLoc ]] ;
+  then
+    echo HTB-Nmap does not exist!
+    cd $installLoc
+    cd Shell-Edition
+    sudo cp htb-nmap.sh $binLoc 
+  else
+  echo HTB Exists
 fi
 }
 
@@ -76,6 +92,7 @@ case $mainInput in
 createDir
 copyHTB
 copyHTBgo
+copyNmap
 copyHTBsetup
 ;;
 2 | Reinstalled | reinstall)
@@ -84,6 +101,7 @@ createDir
 copyHTB
 copyHTBgo
 copyHTBsetup
+copyNmap
 ;;
 3 | uninstalled | uninstall)
 removedir
