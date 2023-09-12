@@ -94,9 +94,14 @@ mainMenu
 
 5 | nmap | np)
 ;;
+6 | lg | legion)
+bash -c 'gnome-terminal -x legion'
+;;
+
+ping | pg)
+ping -c 3 $currIPADDR
+;;
 esac
-
-
 }
 setupTest
 introMenu
