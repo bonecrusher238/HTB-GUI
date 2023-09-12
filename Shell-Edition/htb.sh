@@ -9,6 +9,8 @@ currDnsADDR=$(cat $configLoc | grep -w 'currDnsADDR' | cut -d '=' -f2)
 setupTest() {
     if [ ! "$setupVer" = "TRUE" ];
         then
+        echo You have had an Error!
+        echo Running Setup!
         htb-setup.sh
     fi
 }
@@ -82,6 +84,14 @@ case $input in
     else
         mainMenu
     fi
+
+;;
+
+clear)
+echo Clearing Varibles!
+sed -i "/currDnsADDR/d" $configLoc
+sed -i "/currIPADDR/d" $configLoc
+mainMenu
 
 ;;
 3 | gb | go | gobuster)

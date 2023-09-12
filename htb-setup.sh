@@ -2,6 +2,14 @@
 configLoc='/tmp/htb-gui/config.dat'
 binLoc='/usr/local/bin/'
 installLoc=$(pwd)
+
+removeDir() {
+  sudo rmdir /tmp/htb-gui
+  sudo rm /usr/local/bin/htb.sh
+  sudo rm /usr/local/bin/htb-go-buster.sh
+  sudo rm /usr/local/bin/htb-setup.sh
+}
+
 createDir() {
 if [[ ! -d /tmp/htb-gui ]] ;
   then
@@ -52,10 +60,37 @@ fi
 }
 echo "Complete!"
 
+main() {
 echo $installLoc
 echo "Welcome to HTB Setup!"
-echo "Doing all the work for you!"
+echo "Does this program need to do?"
+echo " 1. Installed"
+echo " 2. Reinstalled"
+echo " 3. Uninstalled"
+echo " 4. Exit"
+printf "\n"
+read -p " :?> " mainInput
+case $mainInput in
+
+1 | install)
 createDir
 copyHTB
 copyHTBgo
 copyHTBsetup
+;;
+2 | Reinstalled | reinstall)
+removeDir
+createDir
+copyHTB
+copyHTBgo
+copyHTBsetup
+;;
+3 | uninstalled | uninstall)
+removedir
+;;
+* | exit)
+;;
+esac
+}
+
+main
