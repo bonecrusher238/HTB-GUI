@@ -3,6 +3,7 @@ configFolderLoc='/tmp/htb-gui'
 configLoc='/tmp/htb-gui/config.dat'
 binLoc='/usr/local/bin/'
 htbLoc='/usr/local/bin/htb.sh'
+sysvarLoc='/usr/local/bin/SystemConfig'
 nmapLoc='/usr/local/bin/htb-nmap.sh'
 installLoc=$(pwd)
 
@@ -37,6 +38,19 @@ if [[ ! -e $nmapLoc ]] ;
     sudo cp htb-nmap.sh $binLoc 
   else
   echo HTB Exists
+fi
+}
+
+copySysVar() {
+if [[ ! -e $sysvarLoc ]] ;
+  then
+    echo Sys-Var does not exist!
+    sudo mkdir /usr/local/bin/SystemConfig
+    cd $installLoc 
+    cd SystemConfig
+    sudo cp sysvar.sh $sysvarLoc
+  else
+  echo Sys-Var Exists
 fi
 }
 
@@ -108,8 +122,7 @@ copyNmap
 removedir
 ;;
 4 | sysconfig)
-
-
+copySysVar
 ;;
 * | exit)
 ;;
