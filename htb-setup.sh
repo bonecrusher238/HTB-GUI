@@ -83,6 +83,7 @@ echo "Does this program need to do?"
 echo " 1. Installed"
 echo " 2. Reinstalled"
 echo " 3. Uninstalled"
+echo " 4. Run System Auto Config"
 echo " 4. Exit"
 printf "\n"
 read -p " :?> " mainInput
@@ -105,6 +106,10 @@ copyNmap
 ;;
 3 | uninstalled | uninstall)
 removedir
+;;
+4 | sysconfig)
+
+
 ;;
 * | exit)
 ;;
