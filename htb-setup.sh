@@ -10,6 +10,7 @@ installLoc=$(pwd)
 
 removeDir() {
   sudo rmdir $configFolderLoc
+  sudo rmdir $sysvarLoc
   sudo rm $htbLoc
   sudo rm /usr/local/bin/htb-go-buster.sh
   sudo rm /usr/local/bin/htb-setup.sh
@@ -49,6 +50,7 @@ if [[ ! -e $sysvarLoc ]] ;
     cd $installLoc 
     cd SystemConfig
     sudo cp sysvar.sh $sysvarLoc
+    sudo cp zshenv $sysvarLoc
   else
   echo Sys-Var Exists
 fi
