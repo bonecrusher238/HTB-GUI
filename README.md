@@ -5,7 +5,7 @@ This file might need to be made an executeable with chmod +x htb-setup.sh (in th
 
 The setup will move the files to /usr/local/bin, so they are executeable from anywhere
 Running the system auto config will set varibles in your system that allow you to shorten the wordlists 
-this is to make life easier and only works with ZSH shell
+this is to make life easier and only works with ZSH shell, There is also a backup located in the Bin Folder
 
 For example:
  /usr/share/wordlists/rockyou.txt = $WL_rockyou
