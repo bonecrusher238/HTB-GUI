@@ -103,6 +103,8 @@ mainMenu
 ;;
 
 5 | nmap | np)
+./htb-nmap.sh
+
 ;;
 6 | lg | legion)
 bash -c 'qterminal -e legion'
