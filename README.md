@@ -1,5 +1,7 @@
 #HTB-GUI
 
+This probably is bad and should not be used by anyone
+
 Navigate to your downloaded directory and run sudo ./htb-setup.sh
 This file might need to be made an executeable with chmod +x htb-setup.sh (in the file directory)
 
