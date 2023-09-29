@@ -11,7 +11,7 @@ installLoc=$(pwd)
 removeDir() {
   sudo rm $configLoc
   sudo rm /usr/local/bin/SystemConfig/sysvar.sh
-  sudo rm /usr/local/bin/Syste,Config/zshenv
+  sudo rm /usr/local/bin/SystemConfig/zshenv
   sudo rmdir $configFolderLoc
   sudo rmdir $sysvarLoc
   sudo rm $htbLoc
