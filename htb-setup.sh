@@ -9,6 +9,9 @@ installLoc=$(pwd)
 
 
 removeDir() {
+  sudo rm $configLoc
+  sudo rm /usr/local/bin/SystemConfig/sysvar.sh
+  sudo rm /usr/local/bin/Syste,Config/zshenv
   sudo rmdir $configFolderLoc
   sudo rmdir $sysvarLoc
   sudo rm $htbLoc
@@ -45,7 +48,7 @@ fi
 copySysVar() {
 if [[ ! -e $sysvarLoc ]] ;
   then
-    echo Sys-Var does not exist!
+    echo Sys-Var does not exist! Fixing that!
     sudo mkdir /usr/local/bin/SystemConfig
     cd $installLoc 
     cd SystemConfig
@@ -59,7 +62,7 @@ fi
 copyHTB() {
 if [[ ! -e '/usr/local/bin/htb.sh' ]] ;
   then
-    echo HTB does not exist!
+    echo HTB does not exist! Fixing that!
     cd $installLoc
     cd Shell-Edition
     sudo cp htb.sh $binLoc 
@@ -71,7 +74,7 @@ fi
 copyHTBgo() {
 if [[ ! -e '/usr/local/bin/htb-go-buster.sh' ]] ;
   then
-   echo HTBgo does not exist!
+   echo HTBgo does not exist! Fixing that!
     cd $installLoc
     cd Shell-Edition
     sudo cp htb-go-buster.sh $binLoc
@@ -83,7 +86,7 @@ fi
 copyHTBsetup() {
 if [[ ! -e '/usr/local/bin/htb-setup.sh' ]] ;
   then
-    echo HTBsetup does not exist!
+    echo HTBsetup does not exist! Fixing that!
     cd $installLoc
     sudo cp htb-setup.sh $binLoc
   else
@@ -111,6 +114,7 @@ copyHTB
 copyHTBgo
 copyNmap
 copyHTBsetup
+echo This did not install ENV varibles!
 ;;
 2 | Reinstalled | reinstall)
 removeDir

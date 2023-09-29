@@ -103,7 +103,7 @@ mainMenu
 ;;
 
 5 | nmap | np)
-./htb-nmap.sh
+htb-nmap.sh
 
 ;;
 6 | lg | legion)
