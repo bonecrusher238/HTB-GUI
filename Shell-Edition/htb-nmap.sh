@@ -50,13 +50,14 @@ saveInfo() {
     echo $currIPADDR
     printf "\n"
     printf "\n"
-    echo "Would you like to save the nmap recon info?(yes/no)"
+    echo "Would you like to save the nmap recon info?(y/n)"
     printf "\n"
     read -p ':?> ' save
-    if [[ $save = 'yes' ]] ;
+    if [[ $save = 'y' ]] ;
      then
         sudo sed -i "/saveData/d" $configLoc
         echo "saveData=true" >> $configLoc
+        refresh
         printf "\n"
         printf "\n"
         echo Saving Data
@@ -68,15 +69,13 @@ saveInfo() {
     fi
 }
 nmapSaveDataCMD() {
-    saveLoc="~/Desktop/$currIPADDR:$currDNSADDR"
-    mkdir ~/Desktop/$currIPADDR:$currDNSADDR
-    cd $saveLoc
+    mkdir ~/Desktop/$currIPADDR
+    cd ~/Desktop/$currIPADDR
     echo $(pwd)
-    bash -c "qterminal -e nmap -oA -Pn LightScan.txt $currIPADDR"
-    bash -c "qterminal -e nmap -sC -sV -oA -Pn MedScan.txt $currIPADDR"
-    bash -c "qterminal -e nmap -sC -sV -oA -Pn LgScan.txt $currIPADDR"
-    bash -c "qterminal -e nmap -sC -sV -oA -p- -Pn FullScan.txt $currIPADDR"
-    bash -c "qterminal -e nmap -script vuln -sV -oA VulnScan.txt $currIPADDR"
+    nmap -oN -Pn LightScan.txt $currIPADDR
+    nmap -sC -sV -oN -Pn MedScan.txt $currIPADDR
+    nmap -sC -sV -oN -p- -Pn FullScan.txt $currIPADDR
+    nmap -script vuln -sV -oN VulnScan.txt $currIPADDR
 }
 
 nmapNoSaveCMD() {
@@ -85,9 +84,11 @@ nmapNoSaveCMD() {
 
 verifyInfo
 saveInfo
+refresh
 
 if [[ $saveData = 'true' ]] ;
     then
+        Echo "Running Script!"
         nmapSaveDataCMD
     else
         nmapNoSaveCMD
