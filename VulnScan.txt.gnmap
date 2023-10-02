@@ -1,2 +1,0 @@
-# Nmap 7.94 scan initiated Sun Oct  1 20:26:41 2023 as: /usr/bin/nmap -script vuln -sV -oA VulnScan.txt 10.10.1
-# Nmap done at Sun Oct  1 20:26:54 2023 -- 1 IP address (0 hosts up) scanned in 13.17 seconds
