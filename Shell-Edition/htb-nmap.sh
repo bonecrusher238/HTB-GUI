@@ -72,9 +72,7 @@ nmapSaveDataCMD() {
     mkdir ~/Desktop/$currIPADDR
     cd ~/Desktop/$currIPADDR
     echo $(pwd)
-    nmap -oN -Pn LightScan.txt $currIPADDR
-    nmap -sC -sV -oN -Pn MedScan.txt $currIPADDR
-    nmap -sC -sV -oN -p- -Pn FullScan.txt $currIPADDR
+    nmap -sC -sV -oN MedScan.txt $currIPADDR
     nmap -script vuln -sV -oN VulnScan.txt $currIPADDR
 }
 
