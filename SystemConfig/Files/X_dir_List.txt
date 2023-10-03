@@ -13,6 +13,16 @@
 # on atleast 3 different hosts
 #
 
+.git
+git
+.htaccess
+.
+.htpasswds
+.htgroup
+.htaccess.bak
+.htuser
+.html
+.htm
 index
 images
 download
