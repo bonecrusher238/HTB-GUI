@@ -86,11 +86,12 @@ echo -----------------------------------------------------------
 if [ $shell = 'SHELL=/usr/bin/zsh' ] ;
     then
     secListExists
-    
     RockVarExists
     db_SmallVarExists
     db_MedVarExists
     dnsJhaddix
     dnsOne20k
     dnsOneFive
+    else
+    echo "You do not have a supported shell!"
 fi
