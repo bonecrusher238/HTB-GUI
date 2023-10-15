@@ -1,5 +1,8 @@
 #HTB-GUI
 
+For the record this is a collection of programs and other tools that do not all belong to me. The main reason of this existing is for me to easily reflash linux machines for hack the box
+
+
 This probably is bad and should not be used by anyone
 
 Navigate to your downloaded directory and run sudo ./htb-setup.sh
@@ -15,3 +18,6 @@ The NMAP script and Gobuster script do not work. Learn it.
 
 For example:
  /usr/share/wordlists/rockyou.txt = $WL_rockyou
+
+
+ 

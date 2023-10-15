@@ -9,15 +9,21 @@ installLoc=$(pwd)
 
 
 removeDir() {
-  sudo rm $configLoc
-  sudo rm /usr/local/bin/SystemConfig/sysvar.sh
-  sudo rm /usr/local/bin/SystemConfig/zshenv
-  sudo rmdir $configFolderLoc
-  sudo rmdir $sysvarLoc
+  sudo rm $configLoc 
+  echo Removed Config file
+  sudo rm /usr/local/bin/SystemConfig/sysvar.sh  || echo sysvar.sh does not exist or was not installed! This could be an error!
+  sudo rm /usr/local/bin/SystemConfig/zshenv || echo zshenv backup does not exist r was not installed!! This could be an error!
+  sudo rmdir $sysvarLoc || echo SystemConfig does not exist or was not installed!! This could be an error!
+  sudo rmdir $configFolderLoc 
+  echo Removed Config Folder
   sudo rm $htbLoc
+  echo Removed htb.sh 
   sudo rm /usr/local/bin/htb-go-buster.sh
+  echo Removed htb-go-buster.sh
   sudo rm /usr/local/bin/htb-setup.sh
+  echo removed htb-setup.sh
   sudo rm $nmapLoc
+  echo removed htb-nmap.sh
 }
 
 createDir() {
@@ -26,9 +32,13 @@ if [[ ! -d /tmp/htb-gui ]] ;
     echo config does not exist!
     mkdir /tmp/htb-gui
     echo > /tmp/htb-gui/config.dat
+    sudo chmod 777 /tmp/htb-gui/config.dat
     echo "##HTB-GUI CONFIG" >> $configLoc
     echo "##THIS IS NOT MADE TO BE EDITED!" >> $configLoc
     echo "SETUP=TRUE" >> $configLoc
+    echo "currIPADDR=NULL" >> $configLoc
+    echo "currDnsADDR=NULL" >> $configLoc
+    echo "saveData=NULL" >> $configLoc
   else
     echo Config Exists
 fi
@@ -40,6 +50,7 @@ if [[ ! -e $nmapLoc ]] ;
     cd $installLoc
     cd Shell-Edition
     sudo cp htb-nmap.sh $binLoc 
+    sudo chmod +x $nmapLoc
   else
   echo HTB Exists
 fi
@@ -54,6 +65,9 @@ if [[ ! -e $sysvarLoc ]] ;
     cd SystemConfig
     sudo cp sysvar.sh $sysvarLoc
     sudo cp zshenv $sysvarLoc
+    sudo chmod +x /usr/local/bin/SystemConfig/sysvar.sh
+    sudo chmod 777 /usr/local/bin/SystemConfig/zshenv
+    sudo chmod 777 $sysvarLoc
   else
   echo Sys-Var Exists
 fi
@@ -66,6 +80,7 @@ if [[ ! -e '/usr/local/bin/htb.sh' ]] ;
     cd $installLoc
     cd Shell-Edition
     sudo cp htb.sh $binLoc 
+    sudo chmod +x $htbLoc
   else
   echo HTB Exists
 fi
@@ -78,6 +93,7 @@ if [[ ! -e '/usr/local/bin/htb-go-buster.sh' ]] ;
     cd $installLoc
     cd Shell-Edition
     sudo cp htb-go-buster.sh $binLoc
+    sudo chmod +x /usr/local/bin/htb-go-buster.sh
   else
   echo HTBgo Exists
 fi
@@ -89,6 +105,7 @@ if [[ ! -e '/usr/local/bin/htb-setup.sh' ]] ;
     echo HTBsetup does not exist! Fixing that!
     cd $installLoc
     sudo cp htb-setup.sh $binLoc
+    sudo chmod +x /usr/local/bin/htb-setup.sh
   else
   echo HTBsetup Exists
 fi
@@ -99,14 +116,20 @@ main() {
 echo $installLoc
 echo "Welcome to HTB Setup!"
 echo "Does this program need to do?"
+echo " 0. Regenerate the config!"
 echo " 1. Installed"
 echo " 2. Reinstalled"
 echo " 3. Uninstalled"
 echo " 4. Run System Auto Config"
-echo " 4. Exit"
+echo " 5. Exit"
 printf "\n"
 read -p " :?> " mainInput
 case $mainInput in
+
+0)
+createDir
+htb.sh
+;;
 
 1 | install)
 createDir
